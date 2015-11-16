@@ -82,14 +82,14 @@ else
   fi
 
 # Number of atoms    
-    num=`grep "Number of atoms" $1 | awk '{print $6}'`
+    num=`grep "| Number of atoms" $1 | awk '{print $6}'`
     echo $num >> $1.xyz
 # Get the energy
     en=`grep "Total energy uncorrected" $1 | awk '{print $6}'| tail -1`
     echo SCF Done $en >> $1.xyz
 # Now to sort out the atom types and numbers   
    num_types=1
-   counter=`grep "Number of atoms " $1 | awk '{print $6}'` 
+   counter=`grep "| Number of atoms " $1 | awk '{print $6}'` 
    echo $counter atoms detected
    type_1=`grep Species: $1 | head -1 | awk '{print $2}'`
    type_array[0]=`echo $type_1`
